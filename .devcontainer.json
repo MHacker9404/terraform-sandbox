@@ -1,3 +1,17 @@
 {
-    "image": "az-cli:v1"
+    "image": "az-cli:v1",
+    "mounts": [
+        "source=${env:HOME}${env:USERPROFILE}/.azure,target=/home/node/.azure,type=bind,consistency=cached",
+        "source=${env:HOME}${env:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
+        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+    ],
+    "extensions": [
+        "ms-vscode.azure-account",
+        "msazurermtools.azurerm-vscode-tools",
+        "ms-azuretools.vscode-azureterraform",
+        "hashicorp.terraform",
+        "oderwat.indent-rainbow",
+        "2gua.rainbow-brackets",
+        "redhat.vscode-yaml"
+    ]
 }
