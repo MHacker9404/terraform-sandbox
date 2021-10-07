@@ -3,8 +3,11 @@
     "mounts": [
         "source=${env:USERPROFILE}/.azure,target=/home/node/.azure,type=bind,consistency=cached",
         "source=${env:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
+        "source=${env:USERPROFILE}/.bash_profile,target=/home/node/.bash_profile,type=bind,consistency=cached",
+        "source=${env:USERPROFILE}/.bashrc,target=/home/node/.bashrc,type=bind,consistency=cached",
         "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
     ],
+    "runArgs": ["--rm"],
     "extensions": [
         "ms-vscode.azure-account",
         "msazurermtools.azurerm-vscode-tools",
