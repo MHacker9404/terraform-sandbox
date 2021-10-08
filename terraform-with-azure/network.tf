@@ -37,16 +37,32 @@ resource "azurerm_public_ip" "pip" {
   allocation_method   = "Dynamic"
 }
 
-resource "azurerm_network_interface" "net-int" {
-  name                = "${var.prefix}-net-interface"
+resource "azurerm_network_interface" "net-int-1" {
+  name                = "${var.prefix}-net-int-1"
   resource_group_name = azurerm_resource_group.rgp-01.name
   location            = azurerm_resource_group.rgp-01.location
   ip_configuration {
-    name                          = "net-int"
+    name                          = "net-int-1"
     subnet_id                     = azurerm_subnet.snet-01.id
     private_ip_address_allocation = "Dynamic"
     public_ip_address_id          = azurerm_public_ip.pip.id
   }
+}
+resource "azurerm_network_interface" "net-int-2" {
+  name                = "${var.prefix}-net-int-2"
+  resource_group_name = azurerm_resource_group.rgp-01.name
+  location            = azurerm_resource_group.rgp-01.location
+  ip_configuration {
+    name                          = "net-int-2"
+    subnet_id                     = azurerm_subnet.snet-01.id
+    private_ip_address_allocation = "Dynamic"
+    public_ip_address_id          = azurerm_public_ip.pip.id
+  }
+}
+
+resource "azurerm_network_interface_application_security_group_association" "asg-1" {
+  network_interface_id          = azurerm_network_interface.net-int-1.id
+  application_security_group_id = azurerm_application_security_group.asg-1.id
 }
 
 resource "azurerm_subnet_network_security_group_association" "example" {
