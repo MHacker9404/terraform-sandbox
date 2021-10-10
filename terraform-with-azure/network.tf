@@ -19,6 +19,12 @@ resource "azurerm_subnet" "snet-02" {
   address_prefixes     = ["10.0.1.0/24"]
 }
 
+resource "azurerm_application_security_group" "asg-1" {
+  name                = "${var.prefix}-asg-1"
+  resource_group_name = azurerm_resource_group.rgp-01.name
+  location            = azurerm_resource_group.rgp-01.location
+}
+
 resource "azurerm_network_security_group" "allow-ssh" {
   name                = "${var.prefix}-nsg-allow-ssh"
   resource_group_name = azurerm_resource_group.rgp-01.name
@@ -97,21 +103,15 @@ resource "azurerm_network_interface" "net-int-2" {
   }
 }
 
-resource "azurerm_application_security_group" "asg-1" {
-  name                = "${var.prefix}-asg-1"
-  resource_group_name = azurerm_resource_group.rgp-01.name
-  location            = azurerm_resource_group.rgp-01.location
-}
-
 resource "azurerm_network_interface_application_security_group_association" "asg-1" {
   network_interface_id          = azurerm_network_interface.net-int-1.id
   application_security_group_id = azurerm_application_security_group.asg-1.id
 }
 
-resource "azurerm_subnet_network_security_group_association" "snet-nsg" {
-  subnet_id                 = azurerm_subnet.snet-01.id
-  network_security_group_id = azurerm_network_security_group.allow-ssh.id
-}
+# resource "azurerm_subnet_network_security_group_association" "snet-nsg" {
+#   subnet_id                 = azurerm_subnet.snet-01.id
+#   network_security_group_id = azurerm_network_security_group.allow-ssh.id
+# }
 
 resource "azurerm_network_interface_security_group_association" "net-int-sg" {
   network_interface_id = azurerm_network_interface.net-int-2.id
