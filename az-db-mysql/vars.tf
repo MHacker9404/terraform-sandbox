@@ -3,6 +3,11 @@ variable "location" {
   default = "eastus"
 }
 
+variable "zones" {
+  type    = list(string)
+  default = []
+}
+
 variable "prefix" {
   type    = string
   default = "prb"
@@ -13,7 +18,7 @@ variable "ssh-source-address" {
   default = "173.31.65.100/32"
 }
 
-variable "zones" {
-  type = list(string)
-  default = [  ]
+variable "mysql-password" {
+  type = string
+  default = ""
 }
