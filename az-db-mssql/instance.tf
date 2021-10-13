@@ -22,7 +22,6 @@ resource "azurerm_linux_virtual_machine" "instance-1" {
     sku       = "18.04-LTS"
     version   = "latest"
   }
-  custom_data = filebase64("custom-data.sh")
 }
 
 resource "azurerm_virtual_machine_extension" "vm-ext-01" {
@@ -34,7 +33,6 @@ resource "azurerm_virtual_machine_extension" "vm-ext-01" {
   auto_upgrade_minor_version = true
   protected_settings         = <<PROTECTED_SETTINGS
     {
-      "script": "H4sIAAAAAAACA41QTUsDMRC9F/ofxir0lIyCeCi04M2jB/9AdpLuhmZ3YmYiLYi/3aygK548Dbx5X7zrK+zihDKsV1RLgkE1yw4xOzq5PogdIxUWPqolHvEULoIL5ITgHaR6BpfVtC8478HA/9yIp2PssXZ10op3D/b2HnNhb1MU/TbWEACDErYEFK6Fms9MsB5HWejr1U+PPijU7J2Gv2icRF1KYC4wirwmo8xJoE7xzL4j48NbkwQaGLbhnLkoPD++PO03N/PZIbcOv4TzdpstHA7wgbZzMhSaE79KLtAnj4KbfGQBAAA="
     }
   PROTECTED_SETTINGS
 }
