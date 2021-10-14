@@ -13,12 +13,12 @@ variable "prefix" {
   default = "prb"
 }
 
-variable "ssh-source-address" {
+variable "ssh_source_address" {
   type    = string
   default = "173.31.65.100/32"
 }
 
-variable "mssql-password" {
+variable "mssql_password" {
   type = string
   default = ""
 }

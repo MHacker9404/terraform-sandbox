@@ -1,8 +1,8 @@
-resource "azurerm_resource_group" "rgp-01" {
+resource "azurerm_resource_group" "rgp_01" {
   name     = "${var.prefix}-az-db-mssql"
   location = var.location
   tags = {
-    module = "azure-services"
-    scenario = "az-db-mssql"
+    module = "azure_services"
+    scenario = "az_db_mssql"
   }
 }

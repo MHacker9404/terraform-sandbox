@@ -1,12 +1,16 @@
 # demo instance 1
-resource "azurerm_linux_virtual_machine" "instance-1" {
+resource "azurerm_linux_virtual_machine" "instance_1" {
   name                            = "${var.prefix}-vm-01"
-  resource_group_name             = azurerm_resource_group.rgp-01.name
-  location                        = azurerm_resource_group.rgp-01.location
-  network_interface_ids           = [azurerm_network_interface.net-int-01.id]
+  resource_group_name             = azurerm_resource_group.rgp_01.name
+  location                        = azurerm_resource_group.rgp_01.location
+  network_interface_ids           = [azurerm_network_interface.net_int_01.id]
   size                            = "Standard_B1s"
   admin_username                  = "demo-admin"
   disable_password_authentication = true
+  depends_on = [
+    azurerm_storage_account.storage,
+    azurerm_key_vault.key_vault
+  ]
   admin_ssh_key {
     username   = "demo-admin"
     public_key = file("../mykey.pub")
@@ -24,9 +28,9 @@ resource "azurerm_linux_virtual_machine" "instance-1" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "vm-ext-01" {
+resource "azurerm_virtual_machine_extension" "vm_ext_01" {
   name                       = "hostname"
-  virtual_machine_id         = azurerm_linux_virtual_machine.instance-1.id
+  virtual_machine_id         = azurerm_linux_virtual_machine.instance_1.id
   publisher                  = "Microsoft.Azure.Extensions"
   type                       = "CustomScript"
   type_handler_version       = "2.1"
