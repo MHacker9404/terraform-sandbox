@@ -11,7 +11,7 @@ resource "azurerm_storage_account" "storage" {
 }
 
 
-resource "azurerm_storage_container" "container_01" {
+resource "azurerm_storage_container" "scripts" {
   name                  = "scripts"
   storage_account_name  = azurerm_storage_account.storage.name
   container_access_type = "private"
@@ -20,7 +20,7 @@ resource "azurerm_storage_container" "container_01" {
 resource "azurerm_storage_blob" "custom_data" {
   name                   = "custom-data.sh"
   storage_account_name   = azurerm_storage_account.storage.name
-  storage_container_name = azurerm_storage_container.container_01.name
+  storage_container_name = azurerm_storage_container.scripts.name
   type                   = "Block"
-  source_content         = file("custom-data.sh")
+  source_content         = file("scripts/custom-data.sh")
 }

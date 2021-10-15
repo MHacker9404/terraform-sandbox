@@ -1,6 +1,6 @@
 # demo instance 1
-resource "azurerm_linux_virtual_machine" "instance_1" {
-  name                            = "${var.prefix}-vm-01"
+resource "azurerm_linux_virtual_machine" "bastion_01" {
+  name                            = "${var.prefix}-bastion-01"
   resource_group_name             = azurerm_resource_group.rgp_01.name
   location                        = azurerm_resource_group.rgp_01.location
   network_interface_ids           = [azurerm_network_interface.net_int_01.id]
@@ -28,15 +28,19 @@ resource "azurerm_linux_virtual_machine" "instance_1" {
   }
 }
 
-resource "azurerm_virtual_machine_extension" "vm_ext_01" {
-  name                       = "hostname"
-  virtual_machine_id         = azurerm_linux_virtual_machine.instance_1.id
+resource "azurerm_virtual_machine_extension" "bastion_ext_01" {
+  name                       = "bastion-ext-01"
+  virtual_machine_id         = azurerm_linux_virtual_machine.bastion_01.id
   publisher                  = "Microsoft.Azure.Extensions"
   type                       = "CustomScript"
   type_handler_version       = "2.1"
   auto_upgrade_minor_version = true
   protected_settings         = <<PROTECTED_SETTINGS
     {
+      "fileUris": ["${azurerm_storage_blob.custom_data.url}"],
+      "commandToExecute": "sh custom-data.sh",
+      "storageAccountName": "${azurerm_storage_account.storage.name}",
+      "storageAccountKey": "${azurerm_storage_account.storage.primary_access_key}"
     }
   PROTECTED_SETTINGS
 }
