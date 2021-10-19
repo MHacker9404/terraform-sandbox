@@ -10,8 +10,12 @@
     "runArgs": ["--rm"],
     "extensions": [
         "ms-vscode.azure-account",
+        "ms-azuretools.vscode-azureresourcegroups",
         "msazurermtools.azurerm-vscode-tools",
         "ms-azuretools.vscode-azureterraform",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "foxundermoon.shell-format",
+        "formulahendry.docker-explorer",
         "hashicorp.terraform",
         "oderwat.indent-rainbow",
         "2gua.rainbow-brackets",
