@@ -16,3 +16,11 @@ output "subscription_id" {
 output "object_id" {
     value = data.azurerm_client_config.current.object_id
 }
+
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription
+data "azurerm_subscription" "current" {
+}
+
+output "current_subscription_display_name" {
+  value = data.azurerm_subscription.current.display_name
+}
