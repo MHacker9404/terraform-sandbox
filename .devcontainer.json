@@ -1,13 +1,14 @@
 {
     "image": "prbservicesllc/az-cli:v1",
+    "workspaceFolder": "/workspace",
     "mounts": [
-        "source=${env:USERPROFILE}/.azure,target=/home/node/.azure,type=bind,consistency=cached",
-        "source=${env:USERPROFILE}/.ssh,target=/home/node/.ssh,type=bind,consistency=cached",
-        "source=${env:USERPROFILE}/.bash_profile,target=/home/node/.bash_profile,type=bind,consistency=cached",
-        "source=${env:USERPROFILE}/.bashrc,target=/home/node/.bashrc,type=bind,consistency=cached",
-        "source=${env:USERPROFILE}/.gitconfig,target=/home/node/.gitconfig,type=bind,consistency=cached",
-        "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=cached"
+        "source=${env:USERPROFILE}/.azure,target=/root/.azure,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.bash_profile,target=/root/.bash_profile,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.bashrc,target=/root/.bashrc,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.gitconfig,target=/root/.gitconfig,type=bind,consistency=consistent",
     ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=consistent",
     "runArgs": ["--rm"],
     "extensions": [
         "ms-vscode.azure-account",
