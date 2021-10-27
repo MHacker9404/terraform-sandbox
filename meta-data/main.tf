@@ -1,0 +1,38 @@
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = "2.82.0"
+    }
+  }
+
+  required_version = "~> 1.0.7"
+}
+
+provider "azurerm" {
+  # Configuration options
+  features {
+    resource_group {
+      prevent_deletion_if_contains_resources = true
+    }
+    virtual_machine {
+      delete_os_disk_on_deletion = true
+      graceful_shutdown          = false
+    }
+  }
+  environment = "public"
+}
+
+variable "users" {
+  type    = list(string)
+  default = ["admin@PRBServicesLLC.onmicrosoft.com"]
+}
+
+data "azuread_user" "user" {
+  for_each = toset(var.users)
+  user_principal_name = each.key
+}
+
+output "users" {
+  value = [for u in data.azuread_user.user : u.object_id]
+}
