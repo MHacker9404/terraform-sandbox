@@ -10,7 +10,8 @@ terraform {
 }
 
 provider "azurerm" {
-  skip_provider_registration = true
+  skip_provider_registration = "true"
+
   # Configuration options
   features {
     resource_group {
@@ -21,10 +22,6 @@ provider "azurerm" {
       graceful_shutdown          = false
     }
   }
+  
   environment = "public"
-}
-
-module "ad_users" {
-  source = "./modules/data-sources"
-  users = ["admin@PRBServicesLLC.onmicrosoft.com"]
 }
