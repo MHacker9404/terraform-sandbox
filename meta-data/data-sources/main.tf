@@ -23,7 +23,7 @@ provider "azurerm" {
   environment = "public"
 }
 
-module "ad_users" {
-  source = "./data-sources"
-  users = ["admin@PRBServicesLLC.onmicrosoft.com"]
+data "azuread_user" "user" {
+  for_each = toset(var.users)
+  user_principal_name = each.key
 }
