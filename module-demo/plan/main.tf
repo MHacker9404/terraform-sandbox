@@ -10,8 +10,7 @@ terraform {
 }
 
 provider "azurerm" {
-  skip_provider_registration = "true"
-
+  skip_provider_registration = true
   # Configuration options
   features {
     resource_group {
@@ -22,6 +21,11 @@ provider "azurerm" {
       graceful_shutdown          = false
     }
   }
-  
   environment = "public"
+}
+
+module "data-sources" {
+  source = "../modules/data-sources"
+  mod-var = var.root-var
+  mod-var-2 = var.root-var-2
 }

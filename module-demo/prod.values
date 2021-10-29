@@ -1,0 +1,2 @@
+root-var = "parent prod value"
+unused-var = "parent unused value"
