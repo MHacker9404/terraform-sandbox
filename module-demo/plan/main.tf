@@ -24,7 +24,8 @@ provider "azurerm" {
   environment = "public"
 }
 
-module "ad_users" {
-  source = "./modules/data-sources"
-  users = ["admin@PRBServicesLLC.onmicrosoft.com"]
+module "data-sources" {
+  source = "../modules/data-sources"
+  mod-var = var.root-var
+  mod-var-2 = var.root-var-2
 }
