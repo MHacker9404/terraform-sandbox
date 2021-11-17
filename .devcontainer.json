@@ -11,6 +11,7 @@
     "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=consistent",
     "runArgs": ["--rm"],
     "extensions": [
+        "hashicorp.terraform",
         "ms-vscode.azure-account",
         "ms-vscode.azurecli",
         "ms-azuretools.vscode-azureresourcegroups",
@@ -28,7 +29,6 @@
         "bencoleman.armview",
         "foxundermoon.shell-format",
         "formulahendry.docker-explorer",
-        "hashicorp.terraform",
         "mindaro.mindaro",
         "oderwat.indent-rainbow",
         "2gua.rainbow-brackets",
