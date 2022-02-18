@@ -1,8 +1,7 @@
 {
     "image": "prbservicesllc/aws:latest",
-    // "image": "cloudposse/tutorials:latest",
     "forwardPorts": [8080],
-    "workspaceFolder": "/tutorials",
+    "workspaceFolder": "/workspace",
     "mounts": [
         "source=${env:USERPROFILE}/.aws,target=/localhost/.aws,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.ssh,target=/localhost/.ssh,type=bind,consistency=consistent",
@@ -18,7 +17,7 @@
         "source=${env:APPDATA}/helm/.local,target=/root/.local/share/helm,type=bind,consistency=consistent",
         "source=//var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=consistent"
     ],
-    "workspaceMount": "source=${localWorkspaceFolder}/cloudposse,target=/tutorials,type=bind,consistency=consistent",
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=consistent",
     "runArgs": ["--rm", "--network=host"],
     "containerEnv": {
         "AWS_PROFILE": "PRB-Tools-East1"
