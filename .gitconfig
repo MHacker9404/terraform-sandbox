@@ -1,0 +1,14 @@
+[core]
+	editor = \"C:\\Users\\philb\\AppData\\Local\\Programs\\Microsoft VS Code Insiders\\bin\\code-insiders\" --wait
+	autocrlf = true
+[user]
+	email = phil.boyd@prb-services-llc.com
+	name = Phil Boyd
+[credential]
+	helper = "!f() { /conf/.vscode-server-insiders/bin/50089c3f92c17584a4aca179f51f220b56c22020-insider/node /tmp/vscode-remote-containers-4ea2e94a4927337db5efb8701432d27863f5dced.js $*; }; f"
+[credential "https://dev.azure.com"]
+	usehttppath = true
+[init]
+	defaultBranch = trunk
+[credential "https://git-codecommit.us-east-1.amazonaws.com/v1/repos/origin"]
+	provider = generic

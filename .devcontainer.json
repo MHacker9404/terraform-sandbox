@@ -1,0 +1,35 @@
+{
+    "image": "prbservicesllc/aws:latest",
+    "forwardPorts": [8080],
+    "workspaceFolder": "/workspace",
+    "mounts": [
+        "source=${env:USERPROFILE}/.aws,target=/root/.aws,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.docker,target=/root/.docker,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.kube,target=/root/.kube,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.bashrc,target=/root/.bashrc,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.bash_profile,target=/root/.bash_profile,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.bash_aliases,target=/root/.bash_aliases,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/vscode.gitconfig,target=/root/.gitconfig,type=bind,consistency=consistent",
+        "source=${env:APPDATA}/Code - Insiders/User/settings.json,target=/root/.vscode-server-insiders/data/Machine/settings.json,type=bind,consistency=consistent",
+        "source=${env:APPDATA}/Code - Insiders/User/container-extensions,target=/root/.vscode-server-insiders/extensions,type=bind,consistency=consistent",
+        "source=${env:APPDATA}/helm/.config,target=/root/.config/helm,type=bind,consistency=consistent",
+        "source=${env:APPDATA}/helm/.local,target=/root/.local/share/helm,type=bind,consistency=consistent",
+        "source=//var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=consistent"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=consistent",
+    "runArgs": ["--rm", "--network=host"],
+    "containerEnv": {
+        "AWS_PROFILE": "PRB-Tools-East1"
+    },
+    "extensions": [
+        "foxundermoon.shell-format",
+        "oderwat.indent-rainbow",
+        "2gua.rainbow-brackets",
+        "hashicorp.terraform",
+        "redhat.vscode-yaml",
+        "arcanis.vscode-zipfs",
+        "erd0s.terraform-autocomplete",
+        "mutantdino.resourcemonitor"
+    ]
+}
