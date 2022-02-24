@@ -1,29 +1,3 @@
-terraform {
-#   required_providers {
-#     aws = {
-#       source  = "hashicorp/aws"
-#       version = "4.2.0"
-#     }
-#   }
-
-#   required_version = ">= 1.1.6"
-
-#   extra_arguments "common_vars" {
-#     commands = get_terraform_commands_that_need_vars()
-
-#     arguments = [
-#       "-var-file=../../common.tfvars",
-#       "-var-file=../region.tfvars"
-#     ]
-#   }
-}
-
-locals {
-#   environment_config = read_terragrunt_config(find_in_parent_folders("environment_specific.hcl"))  
-#   environment = local.environment_config.locals.environment
-#   region = local.environment_config.locals.region
-}
-
 remote_state {
   backend = "s3"
   generate = {

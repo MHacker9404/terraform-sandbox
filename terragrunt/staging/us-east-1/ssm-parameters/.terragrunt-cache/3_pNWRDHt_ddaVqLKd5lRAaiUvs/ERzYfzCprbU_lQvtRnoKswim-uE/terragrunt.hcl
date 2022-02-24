@@ -1,12 +1,8 @@
-include "root" {
-  path = find_in_parent_folders()
-}
-
 locals {
-    terraform_config = read_terragrunt_config(find_in_parent_folders("terraform_config.hcl"))
     environment_config = read_terragrunt_config(find_in_parent_folders("environment_specific.hcl"))
-    environment = local.environment_config.inputs.environment
-    region = local.environment_config.inputs.region
+    region_config = read_terragrunt_config(find_in_parent_folders("region_specific.hcl"))
+    environment = local.environment_config.locals.environment
+    region = local.region_config.locals.region
 }
 
 terraform {
