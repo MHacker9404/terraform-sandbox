@@ -14,8 +14,8 @@ remote_state {
   }
 }
 
-generate "provider" {
-  path      = "provider.tf"
+generate "aws-provider" {
+  path      = "aws-provider.tf"
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
 provider "aws" {
@@ -23,4 +23,9 @@ provider "aws" {
   profile = "PRB-Tools-East1"
 }
 EOF
+}
+
+locals {
+  // cloudposse stuff when their modules are used
+  namespace = "prb"
 }

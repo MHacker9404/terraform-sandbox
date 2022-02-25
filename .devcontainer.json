@@ -7,6 +7,7 @@
         "source=${env:USERPROFILE}/.ssh,target=/root/.ssh,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.docker,target=/root/.docker,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.kube,target=/root/.kube,type=bind,consistency=consistent",
+        "source=${env:USERPROFILE}/.gnupg,target=/root/.gnupg,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.bashrc,target=/root/.bashrc,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.bash_profile,target=/root/.bash_profile,type=bind,consistency=consistent",
         "source=${env:USERPROFILE}/.bash_aliases,target=/root/.bash_aliases,type=bind,consistency=consistent",
@@ -27,9 +28,10 @@
         "oderwat.indent-rainbow",
         "2gua.rainbow-brackets",
         "hashicorp.terraform",
+        "fredwangwang.vscode-hcl-format",
         "redhat.vscode-yaml",
         "arcanis.vscode-zipfs",
-        "erd0s.terraform-autocomplete",
-        "mutantdino.resourcemonitor"
+        "mutantdino.resourcemonitor",
+        "pjmiravalle.terraform-advanced-syntax-highlighting"
     ]
 }
