@@ -12,6 +12,6 @@ terraform {
     resource_group_name = "PRB-DEV-REMOTE-STATE"
     storage_account_name = "prbdevhz797usunfztnv7lgh"
     container_name = "remote-state"
-    key = "dev/mod-20.terraform.tfstate"
+    key = "dev/mod-21-app-2.terraform.tfstate"
   }
 }

@@ -2,7 +2,7 @@ variable "location" {
   type    = string
 }
 
-variable "client" {
+variable "tenant" {
   type    = string
 }
 
