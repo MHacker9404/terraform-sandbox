@@ -15,6 +15,12 @@ crash.log
 #
 *.tfvars
 
+# terraform.tfvar files in example directories
+!modules/remote-state/examples/complete/terraform.tfvars
+!modules/remote-state/examples/sp-test/terraform.tfvars
+!modules/service-principal/examples/complete/terraform.tfvars
+!modules/ad-group/examples/complete/terraform.tfvars
+
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
 override.tf
