@@ -1,0 +1,6 @@
+[submodule "sub-modules/terraform-example-module"]
+	path = sub-modules/terraform-example-module
+	url = https://github.com/cloudposse/terraform-example-module.git
+[submodule "sub-modules/terraform-null-label"]
+	path = sub-modules/terraform-null-label
+	url = https://github.com/cloudposse/terraform-null-label.git
